@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">SusApp</string>
+    <string name="camera">camera</string>
+    <string name="albums">albums</string>
+    <string name="collage">collage</string>
+    <string name="network">network</string>
+</resources>
