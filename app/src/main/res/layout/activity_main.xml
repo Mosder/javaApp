@@ -10,82 +10,97 @@
     <RelativeLayout
         android:layout_weight="1"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/gray">
     </RelativeLayout>
 
     <LinearLayout
         android:layout_weight="1"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/grayer">
         <LinearLayout
             android:layout_weight="1"
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:id="@+id/camera">
             <ImageView
                 android:src="@drawable/camera"
                 android:layout_gravity="center"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_width="@dimen/iconSize"
+                android:layout_height="@dimen/iconSize"/>
             <TextView
                 android:layout_gravity="center"
                 android:text="@string/camera"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"/>
         </LinearLayout>
         <LinearLayout
             android:layout_weight="1"
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:id="@+id/albums">
             <ImageView
                 android:src="@drawable/albums"
                 android:layout_gravity="center"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_width="@dimen/iconSize"
+                android:layout_height="@dimen/iconSize"/>
             <TextView
                 android:layout_gravity="center"
                 android:text="@string/albums"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"/>
         </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
         android:layout_weight="1"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/grayer">
         <LinearLayout
             android:layout_weight="1"
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:id="@+id/collage">
             <ImageView
                 android:src="@drawable/collage"
                 android:layout_gravity="center"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_width="@dimen/iconSize"
+                android:layout_height="@dimen/iconSize"/>
             <TextView
                 android:layout_gravity="center"
                 android:text="@string/collage"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"/>
         </LinearLayout>
         <LinearLayout
             android:layout_weight="1"
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:id="@+id/network">
             <ImageView
                 android:src="@drawable/network"
                 android:layout_gravity="center"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_width="@dimen/iconSize"
+                android:layout_height="@dimen/iconSize"/>
             <TextView
                 android:layout_gravity="center"
                 android:text="@string/network"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"/>
         </LinearLayout>
     </LinearLayout>
 
