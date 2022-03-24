@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
         buttons.put("albums", (LinearLayout) findViewById(R.id.albums));
         buttons.put("collage", (LinearLayout) findViewById(R.id.collage));
         buttons.put("network", (LinearLayout) findViewById(R.id.network));
+        buttons.put("albumsNew", (LinearLayout) findViewById(R.id.albumsNew));
         checkPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE, 100);
 
         for (Map.Entry<String, LinearLayout> entry : buttons.entrySet()) {
@@ -46,6 +47,15 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         Intent intent = new Intent(MainActivity.this, AlbumsActivity.class);
+                        startActivity(intent);
+                    }
+                });
+            }
+            else if (entry.getKey().equals("albumsNew")) {
+                entry.getValue().setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(MainActivity.this, AlbumsNewActivity.class);
                         startActivity(intent);
                     }
                 });

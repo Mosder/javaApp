@@ -104,4 +104,37 @@
         </LinearLayout>
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/grayer">
+        <LinearLayout
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center">
+        </LinearLayout>
+        <LinearLayout
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:id="@+id/albumsNew">
+            <ImageView
+                android:src="@drawable/albums"
+                android:layout_gravity="center"
+                android:layout_width="@dimen/iconSize"
+                android:layout_height="@dimen/iconSize"/>
+            <TextView
+                android:layout_gravity="center"
+                android:text="@string/albumsNew"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"/>
+        </LinearLayout>
+    </LinearLayout>
+
 </LinearLayout>

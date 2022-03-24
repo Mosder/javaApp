@@ -2,4 +2,5 @@
 <resources>
     <dimen name="iconSize">48dp</dimen>
     <dimen name="rowSize">69dp</dimen>
+    <dimen name="photoRowSize">100dp</dimen>
 </resources>

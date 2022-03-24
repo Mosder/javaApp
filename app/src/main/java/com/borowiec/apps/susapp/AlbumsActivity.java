@@ -15,8 +15,6 @@ import android.widget.ListView;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.stream.Stream;
 
 public class AlbumsActivity extends AppCompatActivity {
 
@@ -60,6 +58,7 @@ public class AlbumsActivity extends AppCompatActivity {
                 R.layout.albums_list_row, // nazwa pliku xml naszego wiersza na liście
                 R.id.albumText, // id pola txt w wierszu
                 array ); // tablica przechowująca testowe dane
+        return adapter;
     }
 
     public ArrayList<String> getAlbums() {
