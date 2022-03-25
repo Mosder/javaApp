@@ -30,12 +30,12 @@ public class AlbumNewActivity extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         String albumName = bundle.getString("albumName");
 
-        ListView albumsList = findViewById(R.id.photosList);
-        albumsList.setAdapter(listPhotos(albumName));
+        ListView albumList = findViewById(R.id.photosList);
+        albumList.setAdapter(listPhotos(albumName));
     }
 
-    public ArrayAdapter<String> listPhotos(String albumName) {
-        ArrayList<String> array = getPhotos(albumName);
+    public ArrayAdapter<File> listPhotos(String albumName) {
+        ArrayList<File> array = getPhotos(albumName);
         PhotoListAdapter adapter = new PhotoListAdapter (
                 AlbumNewActivity.this,
                 R.layout.photos_list_row,
@@ -44,12 +44,12 @@ public class AlbumNewActivity extends AppCompatActivity {
         return adapter;
     }
 
-    public ArrayList<String> getPhotos(String albumName) {
+    public ArrayList<File> getPhotos(String albumName) {
         File album = Environment.getExternalStoragePublicDirectory( Environment.DIRECTORY_PICTURES + "/MaciejBorowiec/" + albumName );
         File[] photos = album.listFiles();
-        ArrayList<String> names = new ArrayList<>();
+        ArrayList<File> names = new ArrayList<>();
         for (File photo : photos) {
-            names.add(photo.getName());
+            names.add(photo);
         }
         return names;
     }

@@ -1,8 +1,12 @@
 package com.borowiec.apps.susapp;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
+import android.media.Image;
 import android.os.Environment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -14,15 +18,16 @@ import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
 public class PhotoListAdapter extends ArrayAdapter {
-    private ArrayList<String> _list;
+    private ArrayList<File> _list;
     private Context _context;
     private int _resource;
     private String _albumName;
-    public PhotoListAdapter(@NonNull Context context, int resource, @NonNull ArrayList<String> objects, String album) {
+    public PhotoListAdapter(@NonNull Context context, int resource, @NonNull ArrayList<File> objects, String album) {
         super(context, resource, objects);
         this._list = objects;
         this._context = context;
@@ -35,10 +40,77 @@ public class PhotoListAdapter extends ArrayAdapter {
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         convertView = inflater.inflate(_resource, null);
+
         ImageView photo = (ImageView) convertView.findViewById(R.id.photo);
-        String imagePath = Environment.DIRECTORY_PICTURES + String.format("/MaciejBorowiec/%s/%s", this._albumName, this._list.get(position));
+        String imagePath = this._list.get(position).getPath();
         Bitmap bmp = betterImageDecode(imagePath); // własna funkcja betterImageDecode opisana jest poniżej
         photo.setImageBitmap(bmp); // wstawienie bitmapy do ImageView
+
+        ImageView del = (ImageView) convertView.findViewById(R.id.bDel);
+        del.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder alert = new AlertDialog.Builder(_context);
+                alert.setTitle("Confirmation");
+                alert.setMessage("Delete this photo?");
+                alert.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        _list.get(position).delete();
+                        _list.remove(position);
+                        notifyDataSetChanged();
+                    }
+
+                });
+                alert.setNegativeButton("NO", null);
+                alert.show();
+            }
+        });
+
+        ImageView info = (ImageView) convertView.findViewById(R.id.bInfo);
+        info.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder alert = new AlertDialog.Builder(_context);
+                alert.setTitle("Information");
+                alert.setMessage("Info:\n" + _list.get(position).getPath());
+                alert.setNeutralButton("OK", null);
+                alert.show();
+            }
+        });
+
+        ImageView edit = (ImageView) convertView.findViewById(R.id.bEdit);
+        edit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder alert = new AlertDialog.Builder(_context);
+                alert.setTitle("Add note");
+                alert.setMessage("Set title, content and color");
+                View editView = View.inflate(_context, R.layout.note_dialog, null);
+                int[] colors = {
+                        R.color.salmon,
+                        R.color.red,
+                        R.color.darkred,
+                        R.color.firebrick,
+                        R.color.maroon,
+                        R.color.tomato,
+                        R.color.crimson,
+                        R.color.orangered,
+                };
+//                for (int color : colors) {
+//                    View colorView = new View(_context)
+//                    editView = View.inflate(_context, , null)
+//                }
+                alert.setView(editView);
+                alert.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                    }
+
+                });
+                alert.setNegativeButton("CANCEL", null);
+                alert.show();
+            }
+        });
+
         return convertView;
     }
 
