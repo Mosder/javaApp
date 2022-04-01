@@ -8,12 +8,15 @@ import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.media.Image;
 import android.os.Environment;
+import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -86,25 +89,37 @@ public class PhotoListAdapter extends ArrayAdapter {
                 alert.setTitle("Add note");
                 alert.setMessage("Set title, content and color");
                 View editView = View.inflate(_context, R.layout.note_dialog, null);
-                int[] colors = {
-                        R.color.salmon,
-                        R.color.red,
-                        R.color.darkred,
-                        R.color.firebrick,
-                        R.color.maroon,
-                        R.color.tomato,
-                        R.color.crimson,
-                        R.color.orangered,
-                };
-//                for (int color : colors) {
-//                    View colorView = new View(_context)
-//                    editView = View.inflate(_context, , null)
-//                }
+                int[] colors = Utils.colors();
+                EditText title = editView.findViewById(R.id.title);
+                EditText content = editView.findViewById(R.id.content);
+                final int[] currentColor = {colors[0]};
+                title.setTextColor(currentColor[0]);
+                LinearLayout colorsLayout = editView.findViewById(R.id.colors);
+                for (int color : colors) {
+                    View colorView = new View(_context);
+                    colorView.setBackgroundColor(color);
+                    int size = (int)editView.getResources().getDimension(R.dimen.colorsSize);
+                    colorView.setLayoutParams(new LinearLayout.LayoutParams(size, size));
+                    colorView.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            currentColor[0] = color;
+                            title.setTextColor(currentColor[0]);
+                        }
+                    });
+                    colorsLayout.addView(colorView);
+                }
                 alert.setView(editView);
                 alert.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
+                        DatabaseManager db = new DatabaseManager (
+                            _context, // activity z galerią zdjęć
+                            "NotesBorowiecMaciej.db", // nazwa bazy
+                            null,
+                            1 //wersja bazy, po zmianie schematu bazy należy ją zwiększyć
+                        );
+                        db.insert(String.valueOf(title.getText()), String.valueOf(content.getText()), currentColor[0]);
                     }
-
                 });
                 alert.setNegativeButton("CANCEL", null);
                 alert.show();
