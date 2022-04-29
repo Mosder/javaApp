@@ -7,25 +7,25 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/newAlbumMargin"
+        android:layout_marginEnd="@dimen/rowMargin"
         android:layout_weight="1"
         android:id="@+id/photo"/>
     <ImageView
         android:layout_width="@dimen/iconSize"
         android:layout_height="match_parent"
-        android:layout_marginEnd="@dimen/newAlbumMargin"
+        android:layout_marginEnd="@dimen/rowMargin"
         android:id="@+id/bDel"
         android:src="@drawable/close" />
     <ImageView
         android:layout_width="@dimen/iconSize"
         android:layout_height="match_parent"
-        android:layout_marginEnd="@dimen/newAlbumMargin"
+        android:layout_marginEnd="@dimen/rowMargin"
         android:id="@+id/bEdit"
         android:src="@drawable/pencil"/>
     <ImageView
         android:layout_width="@dimen/iconSize"
         android:layout_height="match_parent"
-        android:layout_marginEnd="@dimen/newAlbumMargin"
+        android:layout_marginEnd="@dimen/rowMargin"
         android:id="@+id/bInfo"
         android:src="@drawable/info"/>
 </LinearLayout>

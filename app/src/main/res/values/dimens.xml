@@ -2,6 +2,9 @@
 <resources>
     <dimen name="iconSize">48dp</dimen>
     <dimen name="rowSize">69dp</dimen>
-    <dimen name="newAlbumMargin">10dp</dimen>
+    <dimen name="notesRowSize">120dp</dimen>
+    <dimen name="noteTextSize">25dp</dimen>
+    <dimen name="notePathSize">10dp</dimen>
+    <dimen name="rowMargin">10dp</dimen>
     <dimen name="colorsSize">40dp</dimen>
 </resources>

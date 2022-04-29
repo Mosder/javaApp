@@ -8,4 +8,5 @@
     <string name="albumsAdd">add an album</string>
     <string name="title">title</string>
     <string name="content">content</string>
+    <string name="notes">notes</string>
 </resources>

@@ -118,7 +118,7 @@ public class PhotoListAdapter extends ArrayAdapter {
                             null,
                             1 //wersja bazy, po zmianie schematu bazy należy ją zwiększyć
                         );
-                        db.insert(String.valueOf(title.getText()), String.valueOf(content.getText()), currentColor[0]);
+                        db.insert(String.valueOf(title.getText()), String.valueOf(content.getText()), currentColor[0], _list.get(position).getPath());
                     }
                 });
                 alert.setNegativeButton("CANCEL", null);

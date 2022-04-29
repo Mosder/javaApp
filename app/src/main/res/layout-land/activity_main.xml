@@ -131,7 +131,19 @@
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center">
+                android:gravity="center"
+                android:id="@+id/notes">
+                <ImageView
+                    android:src="@drawable/pencil"
+                    android:layout_gravity="center"
+                    android:layout_width="@dimen/iconSize"
+                    android:layout_height="@dimen/iconSize"/>
+                <TextView
+                    android:layout_gravity="center"
+                    android:text="@string/notes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"/>
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
