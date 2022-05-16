@@ -131,17 +131,17 @@ public class MainActivity extends AppCompatActivity {
 
     public void savePhoto(Bitmap bitmap, String album) {
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream); // kompresja, typ pliku jpg, png
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream); // kompresja, typ pliku jpg, png
         byte[] byteArray = stream.toByteArray();
 
         SimpleDateFormat df = new SimpleDateFormat("yyyyMMdd_HHmmss");
-        String name = df.format(new Date()) + ".jpg";
+        String name = df.format(new Date()) + ".png";
 
         FileOutputStream fs = null;
         try {
-            File file = new File(String.format("%s/MaciejBorowiec/%s",
-                    Environment.DIRECTORY_PICTURES, album), name);
-            fs = new FileOutputStream(file);
+            File dir = Environment.getExternalStoragePublicDirectory(String.format(
+                    "%s/MaciejBorowiec/%s", Environment.DIRECTORY_PICTURES, album));
+            fs = new FileOutputStream(String.format("%s/%s", dir, name));
             fs.write(byteArray);
             fs.close();
         } catch (IOException e) {

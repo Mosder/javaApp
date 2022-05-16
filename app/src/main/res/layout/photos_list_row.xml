@@ -6,7 +6,7 @@
     android:background="@color/grayer">
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/photoRowSize"
         android:layout_marginEnd="@dimen/rowMargin"
         android:layout_weight="1"
         android:id="@+id/photo"/>

@@ -45,6 +45,7 @@ public class PhotoListAdapter extends ArrayAdapter {
         convertView = inflater.inflate(_resource, null);
 
         ImageView photo = (ImageView) convertView.findViewById(R.id.photo);
+        photo.setScaleType(ImageView.ScaleType.CENTER_CROP);
         String imagePath = this._list.get(position).getPath();
         Bitmap bmp = betterImageDecode(imagePath); // własna funkcja betterImageDecode opisana jest poniżej
         photo.setImageBitmap(bmp); // wstawienie bitmapy do ImageView
