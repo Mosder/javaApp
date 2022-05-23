@@ -51,4 +51,26 @@ public class DatabaseManager extends SQLiteOpenHelper {
         return notes;
     }
 
+    public int delNote(int id) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        return db.delete("notes",
+                "_id = ? ",
+                new String[]{String.valueOf(id)}); // chodzi o id w tej linii
+    }
+
+    public void editNote(int id, String title, String content, int color) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("title", title);
+        contentValues.put("content", content);
+        contentValues.put("color", color);
+
+        db.update("notes",
+                contentValues,
+                "_id = ? ",
+                new String[]{String.valueOf(id)}); // chodzi o id w tej linii
+        db.close();
+    }
 }

@@ -28,7 +28,8 @@ public class NotesActivity extends AppCompatActivity {
         NotesArrayAdapter adapter = new NotesArrayAdapter(
                 NotesActivity.this,
                 R.layout.note_list_row,
-                notes
+                notes,
+                db
         );
         ListView notesList = findViewById(R.id.notesList);
         notesList.setAdapter(adapter);
